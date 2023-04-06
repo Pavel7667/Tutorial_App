@@ -1,0 +1,2 @@
+initial project for Android learning
+add git repo
