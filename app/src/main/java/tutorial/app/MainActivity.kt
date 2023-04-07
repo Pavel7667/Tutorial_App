@@ -1,11 +1,10 @@
 package tutorial.app
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
 
@@ -13,16 +12,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val btn : Button = findViewById(R.id.buttonOne)
-        val editText : EditText = findViewById(R.id.EditTextID)
+        val title : TextView = findViewById(R.id.tv1)
+
+        val btn : Button = findViewById(R.id.btnToSecondView)
         btn.setOnClickListener {
-            val input = editText.text.toString()
-            // they work together
-            if (input.isEmpty()) {
-                return@setOnClickListener
-            }
-            Toast.makeText(it.context,input,Toast.LENGTH_SHORT).show()
-            Snackbar.make(it,input,Snackbar.LENGTH_SHORT).show()
+            val intent  = Intent(this@MainActivity,SecondA::class.java)
+            val titleToPass = title.text
+            intent.putExtra("titleToPass",titleToPass)
+            startActivity(intent)
+
         }
     }
 }
